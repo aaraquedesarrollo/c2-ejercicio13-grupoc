@@ -33,9 +33,9 @@ for (const {
   const facturaBase = filaDummy.querySelector(".factura-base");
   facturaBase.textContent = `${base}€`;
   const facturaIva = filaDummy.querySelector(".factura-iva");
-  facturaIva.textContent = `${(base * tipoIva) / 100}€ (${tipoIva})%`;
+  facturaIva.textContent = `${(base * tipoIva) / 100}€ (${tipoIva}%)`;
   const facturaTotal = filaDummy.querySelector(".factura-total");
-  facturaTotal.textContent = base + (base * tipoIva) / 100;
+  facturaTotal.textContent = `${base + (base * tipoIva) / 100}€`;
   const facturaAbonada = filaDummy.querySelector(".factura-estado");
   facturaAbonada.textContent = abonada;
   const facturaVence = filaDummy.querySelector(".factura-vence");
