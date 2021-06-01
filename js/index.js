@@ -6,8 +6,10 @@ const getFacturasTipo = (tipo) =>
   );
 
 const arrayFacturas = getFacturasTipo("ingreso");
-
 const tablaFacturas = document.querySelector(".tabla-facturas");
+let baseTotalCont = 0;
+let ivaTotalCont = 0;
+let facturaTotalCont = 0;
 
 for (const {
   numero,
@@ -38,12 +40,27 @@ for (const {
   const facturaAbonada = filaDummy.querySelector(".factura-estado");
   facturaAbonada.textContent = abonada;
   if (abonada) {
-    facturaAbonada.textContent = "abonada";
+    facturaAbonada.textContent = "Abonada";
     facturaAbonada.classList.remove("table-danger");
     facturaAbonada.classList.add("table-success");
   } else {
-    facturaAbonada.textContent = "no abonada";
+    facturaAbonada.textContent = "Pendiente";
     facturaAbonada.classList.add("table-danger");
     facturaAbonada.classList.remove("table-success");
   }
+
+  baseTotalCont += base;
+  ivaTotalCont += (base * tipoIva) / 100;
+  facturaTotalCont += base + (base * tipoIva) / 100;
 }
+
+const baseTotal = document.querySelector(".base-total");
+const ivaTotal = document.querySelector(".iva-total");
+const facturaTotal = document.querySelector(".factura-total-totales");
+
+console.log(facturaTotal);
+
+baseTotal.textContent = `${baseTotalCont}€`;
+ivaTotal.textContent = `${ivaTotalCont}€`;
+facturaTotal.textContent = `${facturaTotalCont.toFixed(1)}€`;
+console.log(facturaTotal);
