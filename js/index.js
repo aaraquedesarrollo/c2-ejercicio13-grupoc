@@ -18,7 +18,6 @@ for (const {
   concepto,
   base,
   tipoIva,
-  tipo,
   abonada,
 } of arrayFacturas) {
   const filaDummy = document.querySelector(".factura-dummy").cloneNode(true);
@@ -39,11 +38,29 @@ for (const {
   facturaTotal.textContent = base + (base * tipoIva) / 100;
   const facturaAbonada = filaDummy.querySelector(".factura-estado");
   facturaAbonada.textContent = abonada;
+  const facturaVence = filaDummy.querySelector(".factura-vence");
+  facturaFecha.textContent = `${fechaTimeStamp.toLocaleDateString()}`;
   if (abonada) {
     facturaAbonada.textContent = "Abonada";
     facturaAbonada.classList.remove("table-danger");
     facturaAbonada.classList.add("table-success");
+    facturaVence.textContent = "-";
+    facturaVence.classList.add("table-success");
   } else {
+    if (vencimiento < Date.now()) {
+      const diferenciaTiempo = Math.abs(Date.now() - vencimiento);
+      facturaVence.textContent = `${Math.ceil(
+        diferenciaTiempo / (1000 * 60 * 60 * 24)
+      )} dias`;
+      facturaVence.classList.add("table-success");
+    } else {
+      const diferenciaTiempo = Math.abs(vencimiento - Date.now());
+      facturaVence.textContent = `${Math.ceil(
+        diferenciaTiempo / (1000 * 60 * 60 * 24)
+      )} dias`;
+      facturaVence.classList.add("table-danger");
+    }
+
     facturaAbonada.textContent = "Pendiente";
     facturaAbonada.classList.add("table-danger");
     facturaAbonada.classList.remove("table-success");
@@ -58,9 +75,6 @@ const baseTotal = document.querySelector(".base-total");
 const ivaTotal = document.querySelector(".iva-total");
 const facturaTotal = document.querySelector(".factura-total-totales");
 
-console.log(facturaTotal);
-
 baseTotal.textContent = `${baseTotalCont}€`;
 ivaTotal.textContent = `${ivaTotalCont}€`;
 facturaTotal.textContent = `${facturaTotalCont.toFixed(1)}€`;
-console.log(facturaTotal);
