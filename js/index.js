@@ -23,23 +23,33 @@ for (const {
   const filaDummy = document.querySelector(".factura-dummy").cloneNode(true);
   filaDummy.classList.remove("factura-dummy");
   tablaFacturas.append(filaDummy);
+  // numero registro//
   const facturaNumero = filaDummy.querySelector(".factura-num");
   facturaNumero.textContent = numero;
+  // fecha factura//
   const facturaFecha = filaDummy.querySelector(".factura-fecha");
+
   const fechaTimeStamp = new Date(fecha);
   facturaFecha.textContent = `${fechaTimeStamp.getDay()}/${fechaTimeStamp.getMonth()}/${fechaTimeStamp.getFullYear()}`;
+  // concepto //
   const facturaConcepto = filaDummy.querySelector(".factura-concepto");
   facturaConcepto.textContent = concepto;
+  // base //
   const facturaBase = filaDummy.querySelector(".factura-base");
   facturaBase.textContent = `${base}€`;
+  // IVA //
   const facturaIva = filaDummy.querySelector(".factura-iva");
   facturaIva.textContent = `${(base * tipoIva) / 100}€ (${tipoIva}%)`;
+  // total de la factura//
   const facturaTotal = filaDummy.querySelector(".factura-total");
   facturaTotal.textContent = `${base + (base * tipoIva) / 100}€`;
+  // estado //
   const facturaAbonada = filaDummy.querySelector(".factura-estado");
   facturaAbonada.textContent = abonada;
+  // vencimiento //
   const facturaVence = filaDummy.querySelector(".factura-vence");
   facturaFecha.textContent = `${fechaTimeStamp.toLocaleDateString()}`;
+
   if (abonada) {
     facturaAbonada.textContent = "Abonada";
     facturaAbonada.classList.remove("table-danger");
