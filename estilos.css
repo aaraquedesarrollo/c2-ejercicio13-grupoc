@@ -207,6 +207,9 @@ button[type="submit"] {
   width: 206px;
   margin: 0 auto;
 }
+.factura-dummy {
+  display: none;
+}
 @media (max-width: 1000px) {
   body {
     font-size: 14px;
