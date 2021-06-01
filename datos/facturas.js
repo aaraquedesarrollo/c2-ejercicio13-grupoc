@@ -1,4 +1,4 @@
-const facturas = [
+export const facturas = [
   {
     id: 1,
     numero: "1000",
