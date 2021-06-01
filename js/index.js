@@ -41,6 +41,7 @@ const init = () => {
     filaDummy.classList.remove("factura-dummy");
     tablaFacturas.append(filaDummy);
 
+    //Seleccion de elementos del HTML//
     const facturaNumero = filaDummy.querySelector(".factura-num");
     const facturaFecha = filaDummy.querySelector(".factura-fecha");
     const facturaConcepto = filaDummy.querySelector(".factura-concepto");
@@ -51,6 +52,7 @@ const init = () => {
     const facturaVence = filaDummy.querySelector(".factura-vence");
     const fechaTimeStamp = new Date(fecha);
 
+    //Rellenado de elementos a apartir de cada elemento de arrayFacturas // 
     facturaNumero.textContent = numero;
     facturaFecha.textContent = `${fechaTimeStamp.toLocaleDateString()}`;
     facturaConcepto.textContent = concepto;
