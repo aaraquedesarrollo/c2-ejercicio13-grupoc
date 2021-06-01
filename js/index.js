@@ -25,13 +25,14 @@ for (const {
   const facturaNumero = filaDummy.querySelector(".factura-num");
   facturaNumero.textContent = numero;
   const facturaFecha = filaDummy.querySelector(".factura-fecha");
-  facturaFecha.textContent = fecha;
+  const fechaTimeStamp = new Date(fecha);
+  facturaFecha.textContent = `${fechaTimeStamp.getDay()}/${fechaTimeStamp.getMonth()}/${fechaTimeStamp.getFullYear()}`;
   const facturaConcepto = filaDummy.querySelector(".factura-concepto");
   facturaConcepto.textContent = concepto;
   const facturaBase = filaDummy.querySelector(".factura-base");
-  facturaBase.textContent = base;
+  facturaBase.textContent = `${base}€`;
   const facturaIva = filaDummy.querySelector(".factura-iva");
-  facturaIva.textContent = tipoIva;
+  facturaIva.textContent = `${(base * tipoIva) / 100}€ (${tipoIva})%`;
   const facturaTotal = filaDummy.querySelector(".factura-total");
   facturaTotal.textContent = base + (base * tipoIva) / 100;
   const facturaAbonada = filaDummy.querySelector(".factura-estado");
