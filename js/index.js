@@ -34,4 +34,15 @@ for (const {
   facturaIva.textContent = tipoIva;
   const facturaTotal = filaDummy.querySelector(".factura-total");
   facturaTotal.textContent = base + (base * tipoIva) / 100;
+  const facturaAbonada = filaDummy.querySelector(".factura-estado");
+  facturaAbonada.textContent = abonada;
+  if (abonada) {
+    facturaAbonada.textContent = "abonada";
+    facturaAbonada.classList.remove("table-danger");
+    facturaAbonada.classList.add("table-success");
+  } else {
+    facturaAbonada.textContent = "no abonada";
+    facturaAbonada.classList.add("table-danger");
+    facturaAbonada.classList.remove("table-success");
+  }
 }
